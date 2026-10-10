@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hey, You're Too Close!</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="popup">
+      <header>
+        <p class="eyebrow">Screen Distance</p>
+        <h1>Hey, You're Too Close!</h1>
+      </header>
+
+      <section class="status-card">
+        <span id="status-dot" class="dot"></span>
+        <div>
+          <p id="status-label">Checking status...</p>
+          <small id="status-detail">Loading settings</small>
+        </div>
+      </section>
+
+      <label class="toggle-row">
+        <span>Enabled <small>(Don't cover camera)</small></span>
+        <input id="enabled" type="checkbox">
+      </label>
+
+      <label class="slider-row" for="sensitivity">
+        <span>Sensitivity</span>
+        <strong id="multiplier-label">1.6x</strong>
+      </label>
+      <input id="sensitivity" type="range" min="1.05" max="1.8" step="0.05" value="1.1">
+
+      <p id="last-check" class="last-check">No checks yet.</p>
+
+      <p class="setup-note">Need to reset setup? Sit at your normal distance, then recalibrate.</p>
+      <button id="recalibrate" type="button">Recalibrate</button>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

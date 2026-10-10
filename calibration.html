@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Screen Distance Calibration</title>
+    <link rel="stylesheet" href="calibration.css">
+  </head>
+  <body>
+    <main class="calibration-shell">
+      <section class="preview-section">
+        <video id="preview" autoplay muted playsinline></video>
+        <div id="preview-placeholder" class="preview-placeholder">
+          <strong>Ready to set up?</strong>
+          <span>Click Start, allow camera, then sit normally.</span>
+          <button id="preview-start" type="button">Start setup</button>
+        </div>
+        <canvas id="analysis-canvas" hidden></canvas>
+      </section>
+
+      <section class="calibration-panel">
+        <p class="eyebrow">Screen Distance Monitor</p>
+        <h1>Quick setup</h1>
+        <p class="intro">Set your normal sitting distance once. The extension will use that as your baseline.</p>
+
+        <div class="setup-guide" aria-label="Setup steps">
+          <div>
+            <strong>1. Allow camera</strong>
+            <span>Chrome will ask for permission.</span>
+          </div>
+          <div>
+            <strong>2. Sit normally</strong>
+            <span>Use your usual working distance.</span>
+          </div>
+          <div>
+            <strong>3. Stay still</strong>
+            <span>Calibration takes 10 seconds.</span>
+          </div>
+        </div>
+
+        <div id="success-card" class="success-card" hidden>
+          <div class="confetti" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <p class="success-kicker">That's it!</p>
+          <h2>Nice, you're all set to go.</h2>
+          <p>The extension will periodically check that you are keeping a good distance from the screen.</p>
+        </div>
+
+        <div class="meter" aria-live="polite">
+          <span id="countdown">10</span>
+          <span>seconds</span>
+        </div>
+
+        <div class="stats">
+          <p><strong id="sample-count">0</strong> valid samples</p>
+          <p>Latest ratio: <strong id="latest-ratio">--</strong></p>
+        </div>
+
+        <p id="status" class="status">Camera starting...</p>
+        <div class="actions">
+          <button id="start" type="button">Start setup</button>
+          <button id="retry" type="button" hidden>Retry calibration</button>
+          <button id="open-popup" type="button" hidden>Done</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="libs/face-api.min.js"></script>
+    <script src="calibration.js"></script>
+  </body>
+</html>
